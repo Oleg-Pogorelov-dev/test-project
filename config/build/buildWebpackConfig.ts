@@ -19,11 +19,11 @@ export function buildWebpackConfig(
       path: paths.build,
       clean: true,
     },
-    plugins: buildPlugins(paths),
+    plugins: buildPlugins(paths, isDev),
     module: {
       rules: buildLoaders(isDev),
     },
-    resolve: buildResolvers(),
+    resolve: buildResolvers(paths.src),
     devtool: isDev ? 'inline-source-map' : undefined,
     devServer: isDev ? buildDevServer(port) : undefined,
   };
